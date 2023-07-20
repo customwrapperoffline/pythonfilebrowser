@@ -5,22 +5,24 @@ import shutil
 import distro
 from colorama import Fore, init
 
-
 def display_system_info():
-  print(Fore.YELLOW + "Python version:", platform.python_version())
-  system_info = platform.uname()
-  print("Operating system:", system_info.system, system_info.release)
+    print(Fore.YELLOW + "Python version:", platform.python_version())
+    system_info = platform.uname()
+    print("Operating system:", system_info.system, system_info.release)
 
-  if platform.system() == 'Linux':
-    dist_info = distro.linux_distribution(full_distribution_name=False)
-    dist_name = dist_info[0]
-    dist_version = dist_info[1]
-    print("Linux distribution:", dist_name, dist_version)
+    if platform.system() == 'Linux':
+        dist_info = distro.linux_distribution(full_distribution_name=False)
+        dist_name = dist_info[0]
+        dist_version = dist_info[1]
+        print("Linux distribution:", dist_name, dist_version)
 
-  elif platform.system() == 'Windows':
-    win_version = platform.win32_ver()[0]
-    print("Windows version:", win_version)
+    elif platform.system() == 'Darwin':  # macOS
+        mac_version = platform.mac_ver()[0]
+        print("macOS version:", mac_version)
 
+    elif platform.system() == 'Windows':
+        win_version = platform.win32_ver()[0]
+        print("Windows version:", win_version)
 
 def browse_files():
   current_directory = os.getcwd()
@@ -95,6 +97,6 @@ def browse_files():
 
 
 if __name__ == "__main__":
-  init(autoreset=True)
-  display_system_info()
-  browse_files()
+    init(autoreset=True)
+    display_system_info()
+    browse_files()
