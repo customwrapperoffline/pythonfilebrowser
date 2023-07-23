@@ -1,5 +1,5 @@
 # Python File Browser
-This is an *project* about an python *file browser*.
+This is an *project* about an python *file browser*. This is not GUI-based file, because I want to cover that in a future update.
 
 # What Python version to use
 Use Python version 3.x. DO NOT USE 2.x FOR THIS CODE.
