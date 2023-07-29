@@ -10,9 +10,6 @@ Use Python version 3.x. DO NOT USE 2.x FOR THIS CODE.
 # How to use this thing
 Once you launched the file, you can see *the instructions in the terminal*.
 
-# Easter eggs
-Type in "I type hotdogs" (without quotes) and it will type: Happy Hotdogs!
-
 # What can you do in this time
 You can delete, go back, create folders and files, edit files, and view the current OS version and name.
 
