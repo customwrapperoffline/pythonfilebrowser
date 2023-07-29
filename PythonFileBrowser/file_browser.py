@@ -1,6 +1,7 @@
 import os
 import platform
 import shutil
+import subprocess
 
 import distro
 from colorama import Fore, init
@@ -15,11 +16,6 @@ def display_system_info():
         dist_name = dist_info[0]
         dist_version = dist_info[1]
         print("Linux distribution:", dist_name, dist_version)
-
-    elif platform.system() == 'Darwin':  # macOS
-        mac_version = platform.mac_ver()[0]
-        print("macOS version:", mac_version)
-
     elif platform.system() == 'Windows':
         win_version = platform.win32_ver()[0]
         print("Windows version:", win_version)
@@ -28,6 +24,7 @@ def browse_files():
     current_directory = os.getcwd()
 
     while True:
+        new_path = ""  # Initialize the new_path variable
         print("\n" + Fore.CYAN + "Current directory:", current_directory)
         print(Fore.RESET + "Files and directories in", current_directory + ":\n")
 
@@ -38,13 +35,12 @@ def browse_files():
                 print(Fore.RESET + item)
 
         command = input(
-            "\nEnter 'back', 'd' to delete, 'c' to create folder, 't' to create/edit text file, or file/directory name to enter (q to quit): "
+            "\nEnter 'back', 'd' to delete, 'c' to create folder, 't' to create/edit text file, 'k' to open a file, or file/directory name to enter (q to quit): "
         )
 
         if command == 'q':
             break
-
-        if command == 'back':
+        elif command == 'back':
             current_directory = os.path.dirname(current_directory)
         elif command == 'c':
             new_folder = input("Enter folder name to create: ")
@@ -68,12 +64,24 @@ def browse_files():
                     os.remove(delete_path)
                     print(Fore.RED + "File deleted:", delete_path)
                 else:
-                    shutil.rmtree(delete_path)  # Use shutil.rmtree() for non-empty directories
+                    shutil.rmtree(delete_path)
                     print(Fore.RED + "Folder deleted:", delete_path)
             else:
                 print(Fore.RED + "File/Folder not found.")
-        elif command == 'I type hotdogs':
-            print(Fore.CYAN + "Happy Hotdogs!")
+        elif command == 'k':
+            file_name = input("Enter the text file name to open: ")
+            file_path = os.path.join(current_directory, file_name)
+            if os.path.isfile(file_path):
+                if platform.system() == 'Windows':
+                    os.startfile(file_path)
+                elif platform.system() == 'Darwin':  # For macOS
+                    subprocess.Popen(['open', file_path])
+                elif platform.system() == 'Linux':
+                    subprocess.Popen(['xdg.open', file_path])
+                else:
+                    print("Opening files is not supported on this operating system.")
+            else:
+                print(Fore.RED + "File not found.")
         else:
             new_path = os.path.join(current_directory, command)
 
