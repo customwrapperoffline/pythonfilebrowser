@@ -1,6 +1,9 @@
 # Python File Browser
 This is an *project* about an python *file browser*. This is not GUI-based file, because I want to cover that in a future update.
 
+# To-do list
+Make an GUI-based file browser which runs on Python
+
 # What Python version to use
 Use Python version 3.x. DO NOT USE 2.x FOR THIS CODE.
 
@@ -18,7 +21,7 @@ You need to *download*: distro, colorama.
 
 # Credits
 Me (of course), 
-replit.com for fixing code
+replit.com
 
 # Can I use this code?
 Yes, you can use this code everytime. Make sure to credit me!
