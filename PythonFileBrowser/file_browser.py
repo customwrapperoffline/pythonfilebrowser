@@ -13,7 +13,7 @@ def display_system_info():
   print("Operating system:", system_info.system, system_info.release)
 
   if platform.system() == 'Linux':
-    dist_info = distro.linux_distribution(full_distribution_name=False)
+    dist_info = distro.linux_distribution(full_distribution_name=False) # replace distro.linux_distribution with distro.version
     dist_name = dist_info[0]
     dist_version = dist_info[1]
     print("Linux distribution:", dist_name, dist_version)
